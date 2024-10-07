@@ -1,17 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import "./index.css";
+import App from "./App";
+import store from "./store";
+import { payload } from "./features/accounts/accountSlice";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// store.dispatch({ type: "account/deposit", payload: 250 });
+// console.log(store.getState());
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* store prop pass to reduxstore */}
+    {/* connect redux with react */}
+    {/* now application knows about redux store */}
+    {/*any component in application can read data from store and can dispatch action */}
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
